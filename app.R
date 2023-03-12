@@ -9,6 +9,7 @@ ui <- fluidPage(
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
         sidebarPanel(
+           verbatimTextOutput("update"),
             sliderInput("bins",
                         "Number of bins:",
                         min = 1,
@@ -36,6 +37,9 @@ server <- function(input, output) {
              xlab = 'Waiting time to next eruption (in mins)',
              main = 'Histogram of waiting times')
     })
+    
+    output$update <- renderText(paste("This app was last updated", Sys.time())
+      )
 }
 
 # Run the application 
