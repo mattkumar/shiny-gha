@@ -35,7 +35,7 @@ ui <- page_fluid(
 
 server <- function(input, output) {
   output$date <- renderText({
-    paste0("This app was last updated: ", Sys.time())
+    paste0("This app was last deployed on ", Sys.time())
   })
 }
 
