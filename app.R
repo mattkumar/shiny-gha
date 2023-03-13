@@ -6,7 +6,6 @@ ui <- fluidPage(
     # Application title
     titlePanel("Shiny and GHA"),
 
-    # Sidebar with a slider input for number of bins 
     sidebarLayout(
         sidebarPanel(
            verbatimTextOutput("update"),
