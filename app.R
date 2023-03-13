@@ -1,45 +1,30 @@
 library(shiny)
+library(bslib)
+library(bsicons)
 
-# Define UI 
-ui <- fluidPage(
-
-    # Application title
-    titlePanel("Shiny and GHA"),
-
-    sidebarLayout(
-        sidebarPanel(
-           verbatimTextOutput("update"),
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-           plotOutput("distPlot")
-        )
+ui <- page_fluid(
+  theme = bslib::bs_theme(
+    base_font = font_google("Atkinson Hyperlegible")
+  ),
+  br(),
+  layout_column_wrap(
+    width = "300px",
+    class = "mt-3",
+    value_box(
+      title = "Shiny and GHA",
+      value = textOutput("date"),
+      br(),
+      em(p("This app was automatically deployed to shinyapps.io using GHA")),
+      showcase = bsicons::bs_icon("cloud-upload-fill", size = "100%"),
+      full_screen = TRUE
     )
+  )
 )
 
-# Define server logic required to draw a histogram
 server <- function(input, output) {
-
-    output$distPlot <- renderPlot({
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white',
-             xlab = 'Waiting time to next eruption (in mins)',
-             main = 'Histogram of waiting times')
-    })
-    
-    output$update <- renderText(paste("This app was last updated", Sys.time(), "\n", "If you can read this, I was automatically updated + deployed through gha!")
-      )
+  output$date <- renderText({
+    paste0("Last updated: ", Sys.time())
+  })
 }
 
-# Run the application 
-shinyApp(ui = ui, server = server)
+shinyApp(ui, server)
