@@ -1,0 +1,11 @@
+name: shiny-gha
+title:
+username:
+account: matt-portfolio
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8548295
+bundleId: 6949676
+url: https://matt-portfolio.shinyapps.io/shiny-gha/
+when: 1678666072.96729
+lastSyncTime: 1678666072.9673
