@@ -31,11 +31,6 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install -y libcurl4-openssl-dev
-          
-      - name: Install sass
-        run: |
-          install.packages("sass", version = "0.4.3")
-        shell: Rscript {0}
 
       - name: Restore packages
         shell: Rscript {0}
