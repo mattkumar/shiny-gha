@@ -8,22 +8,34 @@ ui <- page_fluid(
   ),
   br(),
   layout_column_wrap(
-    width = "300px",
+    width = "200px",
     class = "mt-3",
     value_box(
-      title = "Shiny and GHA",
-      value = textOutput("date"),
-      br(),
-      em(p("This app was automatically deployed to shinyapps.io using GHA")),
+      title = "Deploy",
+      p("This app was automatically deployed to shinyapps.io from github using GHA"),
       showcase = bsicons::bs_icon("cloud-upload-fill", size = "100%"),
       full_screen = TRUE
+    ),
+    value_box(
+      title = "Source",
+      p("This app github repo is located", strong(a(href = "https://github.com/mattkumar/shiny-gha", "here"))),
+      showcase = bsicons::bs_icon("github", size = "100%"),
+      full_screen = TRUE,
+      theme_color = "success"
+    ),
+    value_box(
+      title = "Update",
+      value = textOutput("date"),
+      showcase = bsicons::bs_icon("calendar-week", size = "100%"),
+      full_screen = TRUE,
+      theme_color = "danger"
     )
   )
 )
 
 server <- function(input, output) {
   output$date <- renderText({
-    paste0("Last updated: ", Sys.time())
+    paste0("This app was last updated: ", Sys.time())
   })
 }
 
