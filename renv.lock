@@ -225,27 +225,6 @@
       ],
       "Hash": "0baa960e3b49c6176a4f42addcbacc59"
     },
-    "broom": {
-      "Package": "broom",
-      "Version": "1.0.4",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "backports",
-        "dplyr",
-        "ellipsis",
-        "generics",
-        "glue",
-        "lifecycle",
-        "purrr",
-        "rlang",
-        "stringr",
-        "tibble",
-        "tidyr"
-      ],
-      "Hash": "f62b2504021369a2449c54bbda362d30"
-    },
     "bsicons": {
       "Package": "bsicons",
       "Version": "0.1",
