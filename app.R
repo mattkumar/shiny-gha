@@ -37,7 +37,7 @@ server <- function(input, output) {
              main = 'Histogram of waiting times')
     })
     
-    output$update <- renderText(paste("This app was last updated", Sys.time())
+    output$update <- renderText(paste("This app was last updated", Sys.time(), "\n", "If you can read this, I was automatically updated + deployed through gha!")
       )
 }
 

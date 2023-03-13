@@ -38,14 +38,6 @@ jobs:
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
           renv::restore()
         
-      - name: Commit results
-        run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
-          git add *
-          git commit -m 'App Updated' || echo "No changes to commit"
-          git push origin || echo "No changes to commit"
-        
       - name: Deploy to shinyapps.io
         run: |
           rsconnect::setAccountInfo(name="${{secrets.SHINY_ACCOUNT}}", token="${{secrets.SHINY_TOKEN}}", secret="${{secrets.SHINY_SECRET}}")
