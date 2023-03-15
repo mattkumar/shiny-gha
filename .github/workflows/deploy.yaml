@@ -1,6 +1,6 @@
 on:
   push:
-    branches: experimental
+    branches: main
 
 name: Deploying on shinyapps.io example 2
 
