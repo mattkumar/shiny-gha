@@ -2,7 +2,7 @@ on:
   push:
     branches: main
 
-name: Deploying on shinyapps.io example 2
+name: Deploying on shinyapps.io example
 
 jobs:
   generate-data:
