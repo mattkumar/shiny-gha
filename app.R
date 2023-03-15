@@ -1,6 +1,8 @@
 library(shiny)
 library(bslib)
 library(bsicons)
+library(dplyr)
+library(readr)
 
 ui <- page_fluid(
   theme = bslib::bs_theme(
@@ -34,8 +36,14 @@ ui <- page_fluid(
 )
 
 server <- function(input, output) {
+  
   output$date <- renderText({
-    paste0("This app was last deployed on ", Sys.time())
+    
+    last_time <- readr::read_csv("time.csv") %>%
+      slice_tail() %>%
+      pull(time)
+    
+    paste0("This app was last deployed on ", last_time)
   })
 }
 

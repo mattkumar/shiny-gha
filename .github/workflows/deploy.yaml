@@ -1,6 +1,6 @@
 on:
   push:
-    branches: main
+    branches: experimental
 
 name: Deploying on shinyapps.io example
 
@@ -37,10 +37,21 @@ jobs:
         run: |
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
           renv::restore()
+          
+      - name: Execute tracker.R
+        run: Rscript -e 'source("tracker.R")'
+        
+      - name: Commit results
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add *
+          git commit -m 'modifying time' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
         
       - name: Deploy to shinyapps.io
         run: |
           rsconnect::setAccountInfo(name="${{secrets.SHINY_ACCOUNT}}", token="${{secrets.SHINY_TOKEN}}", secret="${{secrets.SHINY_SECRET}}")
-          rsconnect::deployApp(appName = 'shiny-gha')
+          rsconnect::deployApp(appName = 'shiny-gha2')
         shell: Rscript {0}
         
